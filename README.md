@@ -17,12 +17,12 @@ Required files:
 Steps:
 
 1. Ensure UMS is running + web interface
-2. connect to UMS web interface. Default address= http://<serverIP>:9001/
-3. Browse until you find the desired media folder (example: http://<serverIP>:9001/browse/2918)
+2. connect to UMS web interface. Default address= http://\<serverIP\>:9001/
+3. Browse until you find the desired media folder (example: http://\<serverIP\>:9001/browse/2918)
 4. modify dlna.config file as needed.
     - webPort is the server port used to access the web interface (default 9001)
     - dlnaPort is the server port used to play files over dlna (default 5001)
-    - folderUrl = desired media folder (example: http://<serverIP>:9001/browse/2918)
+    - folderUrl = desired media folder (example: http://\<serverIP\>:9001/browse/2918)
 5. run createMVRL.cmd
 6. mvrl folder is created
 7. copy new .mvrl files from mvrl folder to MilkVR folder on android
