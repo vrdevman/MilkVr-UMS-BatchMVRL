@@ -52,6 +52,7 @@ public class Utility {
 	}
 	
 	public void getRootSubFolders() throws IOException  {
+		folderMatches.add(folderUrl.replace(rootWebUrl, ""));
 		getSubFolders(folderUrl);
     }
 	
