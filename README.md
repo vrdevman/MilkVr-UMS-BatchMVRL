@@ -24,4 +24,4 @@ Steps:
 5. run createMVRL.cmd
 6. mvrl folder is created
 7. copy new .mvrl files from mvrl folder to MilkVR folder on android
-8. Start MilkVR and run .mvrl files from sideloaded
+8. Start MilkVR and run .mvrl files from sideloaded 
