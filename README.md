@@ -16,7 +16,7 @@ Required files:
 
 Steps:
 
-1. Ensure UMS is running + web interface
+1. Ensure UMS is running + web interface (http://www.universalmediaserver.com/)
 2. connect to UMS web interface. Default address= http://\<serverIP\>:9001/
 3. Browse until you find the desired media folder (example: http://\<serverIP\>:9001/browse/2918)
 4. modify dlna.config file as needed.
