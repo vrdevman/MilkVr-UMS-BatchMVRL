@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -39,7 +40,9 @@ public class Utility {
 	
 	public void getFiles() throws IOException  {
 		for (String folder : folderMatches) {
-		Document doc = Jsoup.connect(rootWebUrl+folder).get();
+			Connection connection = Jsoup.connect(rootWebUrl+folder).timeout(600000);
+			Document doc = connection.get();
+			connection = null;
 		Element container = doc.body().getElementById("Container");
 		Element folders = container.getElementById("Media");
 		if (folders != null){
@@ -48,7 +51,9 @@ public class Utility {
 			Element first = link.child(0);
 			if (first.attr("title").matches("^.*?(.webm|.mkv|.flv|.flv|.vob|.ogv|.ogg|.drc|.gif|.gifv|.mng|.avi|.mov|.qt|.wmv|.yuv|.rm|.rmvb|.asf|.mp4|.m4p|.m4v|.mpg|.mp2|.mpeg|.mpe|.mpv|.mpg|.mpeg|.m2v|.m4v|.svi|.3gp|.3g2|.mxf|.roq|.nsv|.flv|.f4v|.f4p|.f4a|.f4b)$"))
 			{fileMatches.put(first.attr("href"),first.attr("title"));}
-		}}}
+		}}
+		doc = null;
+		}
 	}
 	
 	public void getRootSubFolders() throws IOException  {
@@ -57,14 +62,18 @@ public class Utility {
     }
 	
 	public void getSubFolders(String url) throws IOException {
-		Document doc = Jsoup.connect(url).get();
+		Connection connection = Jsoup.connect(url).timeout(600000);
+		Document doc = connection.get();
+		connection = null;
 		Element container = doc.body().getElementById("Container");
 		Element folders = container.getElementById("FoldersContainer").getElementById("Folders");
 		Elements links = folders.select("a[href]");
 		for (Element link : links) {
-			folderMatches.add(link.attr("href"));
-			getSubFolders(rootWebUrl+link.attr("href"));
+			String href = link.attr("href");
+			folderMatches.add(href);
+			getSubFolders(rootWebUrl+href);
 		}
+		doc = null;
     }
 	
 	public void createMvrls() throws FileNotFoundException, UnsupportedEncodingException  {
