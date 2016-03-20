@@ -1,19 +1,21 @@
 # MilkVr-UMS-BatchMVRL
 Create MilkVR .mvrl files from the Universal Media Server (Windows)
 
-Note: This was a quick and easy project. Improvements can definitely be made, but functionality is there. This app parses HTML from     the UMS web interface to locate all video files.
+Note: This was a quick and easy project. Improvements can definitely be made, but functionality is there. This app parses HTML from the UMS web interface to locate all video files.
 
 This application requires Universal Media Server and the web interface running.
 
 Universal Media Server should also have transcoding disabled to allow seeking functionality
-  - in UMS android devices can be detected as chromeCast. Disable chromeCast renderer in UMS to avoid this, or ensure proper android         rendered is used. Restart of UMS may be needed 
+  - in UMS android devices can be detected as chromeCast. Disable chromeCast renderer in UMS to avoid this, or ensure proper android rendered is used. Restart of UMS may be needed 
 
 Required files:
-  MilkVrBatch-DLNA.jar
-  dlna.config
-  createMVRL.cmd
+  
+  1. MilkVrBatch-DLNA.jar
+  2. dlna.config
+  3. createMVRL.cmd
 
 Steps:
+
 1. Ensure UMS is running + web interface
 2. connect to UMS web interface. Default address= http://<serverIP>:9001/
 3. Browse until you find the desired media folder (example: http://<serverIP>:9001/browse/2918)
