@@ -5,10 +5,8 @@ Note: This was a quick and easy project. Improvements can definitely be made, bu
 
 This application requires Universal Media Server and the web interface running.
 
-#######################################
 Universal Media Server should also have transcoding disabled to allow seeking functionality
   - in UMS android devices can be detected as chromeCast. Disable chromeCast renderer in UMS to avoid this, or ensure proper android         rendered is used. Restart of UMS may be needed 
-#######################################
 
 Required files:
   MilkVrBatch-DLNA.jar
