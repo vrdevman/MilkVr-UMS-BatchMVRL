@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -70,9 +72,10 @@ public class Utility {
 		Elements links = folders.select("a[href]");
 		for (Element link : links) {
 			String href = link.attr("href");
+			if(!href.equals("javascript:history.back()")){
 			folderMatches.add(href);
 			getSubFolders(rootWebUrl+href);
-		}
+		}}
 		doc = null;
     }
 	
@@ -121,10 +124,22 @@ public class Utility {
 		
 		input = new FileInputStream("dlna.config");
 		prop.load(input);
-		webPort = prop.getProperty("webPort");
-		dlnaPort = prop.getProperty("dlnaPort");
+		webPort = prop.getProperty("webPort").trim();
+		dlnaPort = prop.getProperty("dlnaPort").trim();
 		ipOverride = prop.getProperty("overrideIP");
-		if (!ipOverride.equals("")){currentIP = ipOverride;}
+		if (!ipOverride.equals("")){
+			ipOverride = ipOverride.trim();
+			String IPADDRESS_PATTERN = 
+			        "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)";
+
+			Pattern pattern = Pattern.compile(IPADDRESS_PATTERN);
+			Matcher matcher = pattern.matcher(ipOverride);
+			        if (matcher.find()) {
+			        	currentIP  = matcher.group();
+			        }
+			        else{
+			        	currentIP = "0.0.0.0";
+			        }}
 		rootWebUrl = "http://" + currentIP + ":" + webPort;
 		rootDlnaUrl = "http://" + currentIP + ":" + dlnaPort + "/get/";
 		folderUrl = rootWebUrl + "/" + prop.getProperty("folderUrl");
