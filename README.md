@@ -17,6 +17,9 @@ Required files:
 Steps:
 
 1. Ensure UMS is running + web interface (http://www.universalmediaserver.com/)
+2. Setting in UMS Navigation Share/Settings : Disable 'Hide file extensions' (you want to know its a .mp4)
+3. Setting in UMS Navigation Share/Settings :
+    Enable "hide Empty folder', 'hide the cache folder', 'hide the transcode folder', 'hide the new media folder'
 2. connect to UMS web interface. Default address= http://\<serverIP\>:9001/
 3. Browse until you find the desired media folder (example: http://\<serverIP\>:9001/browse/2918)
 4. modify dlna.config file as needed.
